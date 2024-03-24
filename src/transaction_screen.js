@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, View, Text, FlatList, Button, StyleSheet, Modal, TouchableOpacity, ToastAndroid, Dimensions  } from 'react-native';
+import { Alert, View, Text, FlatList, Button, StyleSheet, TouchableOpacity, ToastAndroid, Dimensions  } from 'react-native';
 import { ref, onValue } from 'firebase/database'; // Make sure to import the appropriate functions from Firebase
 import {db} from '../config'
 import Toast from 'react-native-toast-message';
@@ -12,8 +12,6 @@ const Transaction = () => {
   const [FetchedData, setFetchedData] = useState([]);
   const [filteredData, setFilteredData] = useState(FetchedData);
   const [searchText, setSearchText] = useState('');
-  const [isModalVisible, setIsModalVisible] = useState(false); // State for modal visibility
-  const [selectedItem, setSelectedItem] = useState(null); // State to store selected item
 
   useEffect(() => {
     const dbRef = ref(db, '/Transactions');
@@ -28,71 +26,9 @@ const Transaction = () => {
     })
   }, []);
 
-    
-  const handleItemPress = (item) => {
-    setSelectedItem(item); // Store the clicked item
-    setIsModalVisible(true); // Show the modal
-  };
-
-  const handleModalClose = () => {
-    setIsModalVisible(false); // Hide the modal
-    //setSelectedItem(null); // Clear selected item
-  };
-
-  const handleButton1 = () => {
-    // Implement your logic for button 1 action, using selectedItem if needed
-    console.log('Button 1 pressed', selectedItem);
-    Toast.show({
-      type: 'success',
-      position: 'top',
-      text1: 'Button 1 pressed '+selectedItem,
-      visibilityTime: 1500,
-      autoHide: true
-    });
-    handleModalClose(); // Close the modal after button action
-  };
-
-  const handleButton2 = () => {
-    // Implement your logic for button 2 action, using selectedItem if needed
-    console.log('Button 2 pressed:', selectedItem);
-    Toast.show({
-      type: 'success',
-      position: 'top',
-      text1: 'Button 2 pressed '+selectedItem,
-      visibilityTime: 1500,
-      autoHide: true
-    });
-    handleModalClose(); // Close the modal after button action
-  };
-  /*
-  const handleItemPress = (item) => {
-    Toast.show({
-      type: 'success',
-      position: 'top',
-      text1: item.ItemName,
-      visibilityTime: 1500,
-      autoHide: true
-    });
-  };*/
-
+  
   return (
     <GestureHandlerRootView style={{ flex: 1 , alignItems: 'center', justifyContent: 'center'}}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={handleModalClose}
-        style={{flex:1, alignItems: 'center', justifyContent: 'center', alignContent: 'center'}}
-      >
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <TouchableOpacity style={styles.buttonadd} onPress={handleButton1}>
-              <Text style={styles.buttonText}>+</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.buttondelete, { marginStart: 100 }]} onPress={handleButton2}>
-              <Text style={styles.buttonText}>-</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
       <View style={styles.pageview}>
         <Text style={styles.heading}>ITEMS LIST</Text>
         <View style = {styles.inputstyle}>
@@ -112,10 +48,8 @@ const Transaction = () => {
           data={filteredData}
           style = {styles.list}
           contentContainerStyle={{ padding: 10 ,alignItems: 'center'}}
-          renderItem={({ item }  ) => (
-            <TouchableOpacity style={styles.listItem} onPress={() => handleItemPress(item)}>
-              <Text style={styles.listItemText}>{item.ItemName}</Text>
-            </TouchableOpacity>
+          renderItem={({item}) => (
+            <Text style={styles.listItemText}>{item.ItemName}  {item.Quantity}   {item.InorOut}    {item.Time}</Text>
           )}
           keyExtractor={(item) => item.id.toString()}
         />

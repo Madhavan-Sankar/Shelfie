@@ -2,23 +2,14 @@ import styles from './style';
 import { View, Text , TextInput, Touchable, Keyboard, Alert, TouchableOpacity} from "react-native";
 import React , {useState,forwardRef} from "react";
 import {db} from '../config'
-import { ref , set, push} from "firebase/database";
+import { get, query , ref , set, push} from "firebase/database";
+import { useNavigation } from "@react-navigation/native"
 import Toast from 'react-native-toast-message';
 
 const AddItem = () => {
     const [ItemName, setItemName] = useState('');
     const [Qty, setQty] = useState('');
-    
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0'); 
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-    const hour = today.getHours();
-    const hh = hour % 12 || 12;
-    const mins = today.getMinutes();
-    const amPm = hour < 12 ? 'AM' : 'PM';
-    const formattedDateTime = `${dd}/${mm}/${yyyy} ${hh}:${mins.toString().padStart(2, '0')} ${amPm}`;
-
+    const navigation = useNavigation();
 
     const addItemFirebase = () =>{
         if(ItemName.trim() === '' || Qty.trim() === '')
@@ -38,13 +29,6 @@ const AddItem = () => {
                 ItemName: ItemName,
                 Quantity: Qty
             });
-            const newTransasctionKey = push(ref(db,'Transactions/')).key;
-            set(ref(db,`Transactions/${newItemKey}`),{
-                InorOut: 'In',
-                ItemName: ItemName,
-                Quantity: Qty,
-                Time: formattedDateTime
-            })
             setItemName('');
             setQty('');
             Toast.show({
@@ -54,6 +38,9 @@ const AddItem = () => {
                 visibilityTime: 1500,
                 autoHide: true
             });
+            setTimeout(() => {
+                navigation.navigate('HomePage');
+              }, 800);
         }
     }
     return (
@@ -64,7 +51,7 @@ const AddItem = () => {
             <TextInput
                 placeholder="ItemName"
                 style={styles.input}
-                onChangeText={(text) => setItemName(text)}
+                onChangeText={(text) => setItemName(text.toUpperCase())}
                 value= {ItemName}
                 placeholderTextColor="#C70039"
             />
