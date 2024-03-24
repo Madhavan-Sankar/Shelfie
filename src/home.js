@@ -13,6 +13,9 @@ export default function HomePage({navigation}) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Itemslist')}>
           <Text style={styles.buttonText}>View Items</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Transaction')}>
+          <Text style={styles.buttonText}>View Transactions</Text>
+      </TouchableOpacity>
     </View>
   );
 }

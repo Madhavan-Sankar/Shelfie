@@ -19,12 +19,25 @@ export default StyleSheet.create({
       justifyContent: 'center'
 
     },
+    
     button: {
-      backgroundColor: '#C70039',
+      backgroundColor: '#fc3d03',
       padding: 10,
       borderRadius: 20,
       borderCurve: 20,
       marginTop: 20
+    },
+    buttonadd: {
+      backgroundColor: '#52fc03',
+      width: 60,
+      height: 35,
+      borderRadius: 20
+    },
+    buttondelete: {
+      backgroundColor: '#fc3d03',
+      width: 60,
+      height: 35,
+      borderRadius: 20
     },
     buttonText: {
       color: 'white',
