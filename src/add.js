@@ -1,7 +1,7 @@
 import styles from './style';
 import { View, Text , TextInput, Touchable, Keyboard, Alert, TouchableOpacity} from "react-native";
 import React , {useState,forwardRef} from "react";
-import {db} from '../config'
+import {db} from '../firebase_config'
 import { get, query , ref , set, push} from "firebase/database";
 import { useNavigation } from "@react-navigation/native"
 import Toast from 'react-native-toast-message';
@@ -27,7 +27,7 @@ const AddItem = () => {
             const newItemKey = push(ref(db, 'Items/')).key;
             set(ref(db, `Items/${newItemKey}`), {
                 ItemName: ItemName,
-                Quantity: Qty
+                Quantity: parseInt(Qty)
             });
             setItemName('');
             setQty('');

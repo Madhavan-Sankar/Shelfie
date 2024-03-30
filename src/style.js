@@ -1,13 +1,11 @@
-
-import { list } from 'firebase/storage';
 import { StyleSheet , Dimensions} from 'react-native';
 
 export default StyleSheet.create({
     heading: {
         textAlign: 'center',
-        fontSize: 24, 
-        color: '#C70039',
-        paddingBottom: 20,
+        fontSize: 25, 
+        color: '#000000',
+        paddingBottom: 10,
         fontWeight: 'bold',
     },
     pageview: {
@@ -19,7 +17,10 @@ export default StyleSheet.create({
       justifyContent: 'center'
 
     },
-    
+    closeButtonText:{
+      color: '#eb1405',
+      fontSize:23
+    },
     button: {
       backgroundColor: '#fc3d03',
       padding: 10,

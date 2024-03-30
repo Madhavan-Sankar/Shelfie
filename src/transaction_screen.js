@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, View, Text, FlatList, Button, StyleSheet, TouchableOpacity, ToastAndroid, Dimensions  } from 'react-native';
 import { ref, onValue } from 'firebase/database'; // Make sure to import the appropriate functions from Firebase
-import {db} from '../config'
+import {db} from '../firebase_config'
 import Toast from 'react-native-toast-message';
 import { TextInput } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
