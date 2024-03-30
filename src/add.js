@@ -6,6 +6,16 @@ import { get, query , ref , set, push} from "firebase/database";
 import { useNavigation } from "@react-navigation/native"
 import Toast from 'react-native-toast-message';
 
+const today = new Date();
+const dd = String(today.getDate()).padStart(2, '0'); 
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const yyyy = today.getFullYear();
+const hour = today.getHours();
+const hh = hour % 12 || 12;
+const mins = today.getMinutes();
+const amPm = hour < 12 ? 'AM' : 'PM';
+const formattedDateTime = `${dd}/${mm}/${yyyy} ${hh}:${mins.toString().padStart(2, '0')} ${amPm}`;
+
 const AddItem = () => {
     const [ItemName, setItemName] = useState('');
     const [Qty, setQty] = useState('');
@@ -31,6 +41,13 @@ const AddItem = () => {
             });
             setItemName('');
             setQty('');
+            const newTransasctionKey = push(ref(db,'Transactions/')).key;
+            set(ref(db,`Transactions/${newTransasctionKey}`),{
+                InorOut: 'In',
+                ItemName: ItemName,
+                Quantity: parseInt(Qty),
+                Time: formattedDateTime
+            });
             Toast.show({
                 type: 'success',
                 position: 'top',

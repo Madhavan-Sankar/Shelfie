@@ -12,7 +12,10 @@ import Itemslist from './src/list';
 import Transaction from './src/transaction_screen';
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import './firebase_config/auth'
 const Stack = createNativeStackNavigator()
+
+
 export default function App() { 
   return ( 
     <NavigationContainer > 

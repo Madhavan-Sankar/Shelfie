@@ -73,6 +73,16 @@ const Itemslist = () => {
       });
       setInputNumber(null);
     }
+    else if (parseInt(selectedItem.Quantity) - parseInt(InputNumber) < 0 && str=='Out'){
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Invalid !!, Only '+selectedItem.Quantity+' is available',
+        visibilityTime: 1500,
+        autoHide: true
+      });
+      setInputNumber(null);
+    }
     else {
         //push in or out transaction details into Transactions schema with date and time info
         const newTransasctionKey = push(ref(db,'Transactions/')).key;

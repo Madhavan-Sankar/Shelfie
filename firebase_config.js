@@ -1,6 +1,6 @@
 import firebase from "firebase/compat/app";
 import { getDatabase } from "firebase/database";
-
+import 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAFye6W9eK_hpacL5Ye7lyyRJyiMj3B6AU",
@@ -12,7 +12,7 @@ const firebaseConfig = {
     appId: "1:947523017302:web:2a1c89d779b9186b5779f7",
     measurementId: "G-ZR5JWFL9ZG"  
   };
-  
+
 
 if(!firebase.apps.length)
 {

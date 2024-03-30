@@ -4,7 +4,7 @@ export default StyleSheet.create({
     heading: {
         textAlign: 'center',
         fontSize: 25, 
-        color: '#000000',
+        color: '#130273',
         paddingBottom: 10,
         fontWeight: 'bold',
     },
