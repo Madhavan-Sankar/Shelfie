@@ -1,9 +1,8 @@
 import firebase from "firebase/compat/app";
 import { getDatabase } from "firebase/database";
-import 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAFye6W9eK_hpacL5Ye7lyyRJyiMj3B6AU",
+    apiKey: "AIzaSyAFye6W9eK_hpacL5Ye7lyyRJyiMj3B6AU",  
     authDomain: "stock-f7727.firebaseapp.com",
     databaseURL: "https://stock-f7727-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "stock-f7727",

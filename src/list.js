@@ -77,7 +77,7 @@ const Itemslist = () => {
       Toast.show({
         type: 'error',
         position: 'top',
-        text1: 'Invalid !!, Only '+selectedItem.Quantity+' is available',
+        text1: 'Sorry, Only '+selectedItem.Quantity+' is available!!',
         visibilityTime: 1500,
         autoHide: true
       });

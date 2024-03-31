@@ -10,9 +10,9 @@ import HomePage from './src/home';
 import AddItem from './src/add';
 import Itemslist from './src/list';
 import Transaction from './src/transaction_screen';
+import KeyInputScreen from './src/KeyInputScreen';
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import './firebase_config/auth'
 const Stack = createNativeStackNavigator()
 
 
@@ -20,7 +20,8 @@ export default function App() {
   return ( 
     <NavigationContainer > 
       <Stack.Navigator screenOptions={{ headerShown: false }}> 
-        <Stack.Screen name="HomePage" component = {HomePage} /> 
+        <Stack.Screen name="KeyInputScreen" component = {KeyInputScreen} />  
+        <Stack.Screen name="HomePage" component = {HomePage} />
         <Stack.Screen name="AddItem" component = {AddItem} /> 
         <Stack.Screen name="Itemslist" component = {Itemslist} /> 
         <Stack.Screen name="Transaction" component = {Transaction} /> 

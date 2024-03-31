@@ -16,6 +16,9 @@ export default function HomePage({navigation}) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Transaction')}>
           <Text style={styles.buttonText}>View Transactions</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('KeyInputScreen')}>
+          <Text style={styles.buttonText}>Key Input Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 }
