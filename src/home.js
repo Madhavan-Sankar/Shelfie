@@ -1,6 +1,6 @@
 import styles from './style';
-import React from 'react';
-import { View, Button , Text, TouchableOpacity} from "react-native";
+import React, { useState, useEffect } from 'react';
+import { View, BackHandler , Text, TouchableOpacity} from "react-native";
 
 export default function HomePage({navigation}) {
 

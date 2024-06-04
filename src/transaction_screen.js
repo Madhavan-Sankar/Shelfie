@@ -47,13 +47,33 @@ const Transaction = () => {
         </View>
         <FlatList
           data={filteredData}
-          style = {styles.list}
-          contentContainerStyle={{ padding: 10 ,alignItems: 'center'}}
-          renderItem={({item}) => (
-            <Text style={styles.listItemText}>{item.ItemName}  {item.Quantity}   {item.InorOut}    {item.Time}</Text>
+          style={styles.list}
+          contentContainerStyle={{ padding: 5, alignItems: 'center' }}
+          renderItem={({ item }) => (
+            <View
+              style={styles.listouterview}
+            >
+                <View
+                  style={styles.listinnerleftview}
+                >
+                  <Text style={styles.listItemText}>ItemName:</Text>
+                  <Text style={styles.listItemText}>Quantity:</Text>
+                  <Text style={styles.listItemText}>Action:</Text>
+                  <Text style={styles.listItemText}>Time:</Text>
+                </View>
+                <View
+                  style={styles.listinnerrightview}
+                >
+                  <Text style={styles.listItemText}>{item.ItemName}</Text>
+                  <Text style={styles.listItemText}>{item.Quantity}</Text>
+                  <Text style={styles.listItemText}>{item.InorOut}</Text>
+                  <Text style={styles.listItemText}>{item.Time}</Text>
+                </View>
+                
+            </View>
           )}
-          keyExtractor={(item) => item.id.toString()}
         />
+
         <Toast ref={(ref) => Toast.setRef(ref)} />
       </View>
     </GestureHandlerRootView>

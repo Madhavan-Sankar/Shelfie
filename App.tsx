@@ -1,3 +1,6 @@
+//to start the project
+//npm run android
+
 //to build an apk
 //goto shelfie/android
 //gradlew clean
@@ -21,7 +24,7 @@ export default function App() {
     <NavigationContainer > 
       <Stack.Navigator screenOptions={{ headerShown: false }}> 
         <Stack.Screen name="KeyInputScreen" component = {KeyInputScreen} />  
-        <Stack.Screen name="HomePage" component = {HomePage} />
+        <Stack.Screen name="HomePage" component = {HomePage}/>
         <Stack.Screen name="AddItem" component = {AddItem} /> 
         <Stack.Screen name="Itemslist" component = {Itemslist} /> 
         <Stack.Screen name="Transaction" component = {Transaction} /> 
