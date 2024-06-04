@@ -22,8 +22,8 @@ const Stack = createNativeStackNavigator()
 export default function App() { 
   return ( 
     <NavigationContainer > 
-      <Stack.Navigator screenOptions={{ headerShown: false }}> 
-        <Stack.Screen name="KeyInputScreen" component = {KeyInputScreen} />  
+      <Stack.Navigator screenOptions={{ headerShown: false }}>   
+        <Stack.Screen name="KeyInputScreen" component = {KeyInputScreen} />
         <Stack.Screen name="HomePage" component = {HomePage}/>
         <Stack.Screen name="AddItem" component = {AddItem} /> 
         <Stack.Screen name="Itemslist" component = {Itemslist} /> 

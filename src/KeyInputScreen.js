@@ -66,14 +66,14 @@ const KeyInputScreen = ({ navigation }) => {
           Toast.show({
             type: 'success',
             position: 'top',
-            text1: "Key Validated!!",
+            text1: "Authenticated!!",
             visibilityTime: 1500,
             autoHide: true
           });
           setTimeout(() => {
             navigation.navigate('HomePage');        
             console.log('navigated!');
-          }, 800);
+          }, 200);
         }
         else
         {
@@ -102,6 +102,10 @@ const KeyInputScreen = ({ navigation }) => {
           visibilityTime: 1500,
           autoHide: true
         });
+      }
+      else{
+        navigation.navigate('HomePage');        
+        console.log('navigated!');
       }
   };
 

@@ -3,19 +3,25 @@ import { StyleSheet , Dimensions} from 'react-native';
 export default StyleSheet.create({
     heading: {
         textAlign: 'center',
-        fontSize: 25, 
+        fontSize: 22, 
         color: '#130273',
         paddingBottom: 10,
-        fontWeight: 'bold',
+        fontWeight: 'semibold',
     },
+    subheading: {
+      textAlign: 'center',
+      fontSize: 15, 
+      color: '#130273',
+      paddingBottom: 10,
+      fontWeight: 'semibold',
+    }, 
     pageview: {
       flex: 1,
-      backgroundColor: '#DAF7A6',//whole app page background color
+      backgroundColor: '#CAD2C5',//whole app page background color
       paddingLeft: 10,
       paddingRight: 10,
       alignItems: 'center',
-      justifyContent: 'center'
-
+      justifyContent: 'center',
     },
     closeButtonText:{
       color: '#eb1405',
@@ -49,7 +55,6 @@ export default StyleSheet.create({
         height: Dimensions.get('window').height, 
         width: Dimensions.get('window').width-10,
         height: 100,
-        backgroundColor: '#C9DDF5',
         borderRadius: 20,
         paddingHorizontal: 1,
     },

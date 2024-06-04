@@ -44,6 +44,7 @@ const Itemslist = () => {
     setSelectedItem(item); // Store the clicked item
     setIsModalVisible(true); // Show the modal
     setInputNumber(null)
+    
   };
 
   const handleModalClose = () => {
@@ -151,45 +152,45 @@ const Itemslist = () => {
         }}>
           <TouchableOpacity style={{width: 25, height: 25, paddingTop: 1,}} onPress={() => handleModalClose()}>
                       <Text style={{fontSize: 20, fontFamily: 'bold', color: '#e6050c',}}>X</Text>
-            </TouchableOpacity>
-            <View style={{ 
-                flexDirection: 'column', 
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: 10,
-                width: '100%'
-              }}>
-                <Text style = {styles.heading}>
-                  {selectedItem !== null ? selectedItem.ItemName : 'null'}
-                </Text>
-                <TextInput
-                    style={{
-                      color: '#8c0a79',
-                      fontSize: 20,
-                      width: 250,
-                      justifyContent: 'center',
-                      textAlign: 'center',
-                      marginTop: 5,
-                      marginBottom: 20
-                    }}
-                    keyboardType="numeric" 
-                    placeholder="Enter number"
-                    placeholderTextColor="#8c0a79"
-                    value={InputNumber}
-                    onChangeText={handleChangeNumber}
-                />
-                <View style={{flexDirection: 'row', }}>
-                    <TouchableOpacity style={styles.buttonadd} onPress={() => handleModalItemPress('In')}>
-                        <Text style={styles.buttonText}>+</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.buttondelete, {marginStart: 150}]} onPress={() => handleModalItemPress('Out')}>
-                        <Text style={styles.buttonText}>-</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+          </TouchableOpacity>
+          <View style={{ 
+              flexDirection: 'column', 
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: 10,
+              width: '100%'
+          }}>
+              <Text style = {styles.heading}>
+                {selectedItem !== null ? selectedItem.ItemName : 'null'}
+              </Text>
+              <TextInput
+                  style={{
+                    color: '#8c0a79',
+                    fontSize: 20,
+                    width: 250,
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    marginTop: 5,
+                    marginBottom: 20
+                  }}
+                  keyboardType="numeric" 
+                  placeholder="Enter number"
+                  placeholderTextColor="#8c0a79"
+                  value={InputNumber}
+                  onChangeText={handleChangeNumber}
+              />
+              <View style={{flexDirection: 'row', }}>
+                  <TouchableOpacity style={styles.buttonadd} onPress={() => handleModalItemPress('In')}>
+                      <Text style={styles.buttonText}>+</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[styles.buttondelete, {marginStart: 150}]} onPress={() => handleModalItemPress('Out')}>
+                      <Text style={styles.buttonText}>-</Text>
+                  </TouchableOpacity>
+              </View>
+          </View>
         </View>
       </Modal>
-      <View style={styles.pageview}>
+      <View style={[styles.pageview, { maxHeight: '99%'}]}>
         <Text style={styles.heading}>ITEMS LIST</Text>
         <View style = {styles.inputstyle}>
         <TextInput
@@ -206,11 +207,16 @@ const Itemslist = () => {
         </View>
         <FlatList
           data={filteredData}
-          style = {styles.list}
-          contentContainerStyle={{ padding: 5 ,alignItems: 'center'}}
           renderItem={({ item }  ) => (
-            <TouchableOpacity style={styles.listItem} onPress={() => handleItemPress(item)}>
-              <Text style={styles.listItemText}>{item.ItemName}      {item.Quantity}</Text>
+            <TouchableOpacity onPress={() => handleItemPress(item)}>
+              <View style={styles.listouterview}>
+                <View style={[styles.listinnerleftview, {width:'30%'}]}>
+                  <Text style={styles.listItemText}>{item.ItemName}</Text>
+                </View>
+                <View style={[styles.listinnerrightview, {width:'40%', alignItems: 'flex-end'}]}>
+                  <Text style={styles.listItemText}>{item.Quantity}</Text>
+                </View>
+              </View>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}
